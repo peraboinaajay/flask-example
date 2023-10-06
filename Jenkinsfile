@@ -12,9 +12,13 @@ pipeline {
         sh 'docker build -t ajayperaboina/jenkins-docker-hub .'
       }
     }
-    stage('Login & Push') {
+    stage('Login') {
       steps {
         sh 'echo "Peraboin@85" | docker login -u ajayperaboina --password-stdin'
+      }
+    }
+    stage('Push') {
+      steps {
         sh 'docker push ajayperaboina/jenkins-docker-hub'
       }
     }
