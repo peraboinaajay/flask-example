@@ -14,14 +14,19 @@ pipeline {
     }
     stage('Login') {
       steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        sh 'echo "Peraboin@85" | docker login -u ajayperaboina --password-stdin'
       }
     }
     stage('Push') {
       steps {
-        sh 'docker push lloydmatereke/jenkins-docker-hub'
+        sh 'docker push ajay/jenkins-docker-hub'
       }
     }
+    // stage('Deploy') {
+    //   steps {
+    //     sh 'kubectl apply -f deploy.yaml'
+    //   }
+    // }
   }
   post {
     always {
